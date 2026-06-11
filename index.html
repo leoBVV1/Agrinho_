@@ -6,15 +6,12 @@
     <title>EcoCarbono - Agrinho 2026</title>
     <link rel="stylesheet" href="reset.css">
     <link rel="stylesheet" href="style.css">
-    <!-- Bibliotecas externas para Gráficos e PDF -->
-    <script src="https://jsdelivr.net"></script>
-    <script src="https://cloudflare.com"></script>
 </head>
 <body>
-    <div class="container" id="conteudo-projeto">
+    <div class="container">
         <header>
             <h1>🌱 EcoCarbono</h1>
-            <p>Calculadora de Créditos Verdes para o Agro Paranaense</p>
+            <p>Calculadora de Créditos Verdes • Agrinho 2026</p>
         </header>
 
         <main>
@@ -23,23 +20,23 @@
                 
                 <div class="grid-inputs">
                     <div class="input-group">
-                        <label for="diesel">Combustível gasto (Litros/Ano):</label>
-                        <input type="number" id="diesel" placeholder="Ex: 5000" min="0">
+                        <label for="diesel">Diesel Gasto (Litros/Ano):</label>
+                        <input type="number" id="diesel" value="0" min="0">
                     </div>
 
                     <div class="input-group">
-                        <label for="fertilizante">Fertilizantes Químicos (Kg/Ano):</label>
-                        <input type="number" id="fertilizante" placeholder="Ex: 2000" min="0">
+                        <label for="fertilizante">Adubo Químico (Kg/Ano):</label>
+                        <input type="number" id="fertilizante" value="0" min="0">
                     </div>
 
                     <div class="input-group">
                         <label for="mata">Mata Preservada (Hectares):</label>
-                        <input type="number" id="mata" placeholder="Ex: 15" min="0">
+                        <input type="number" id="mata" value="0" min="0">
                     </div>
 
                     <div class="input-group">
-                        <label for="plantio-direto">Sistema Plantio Direto (Hectares):</label>
-                        <input type="number" id="plantio-direto" placeholder="Ex: 40" min="0">
+                        <label for="plantio-direto">Plantio Direto (Hectares):</label>
+                        <input type="number" id="plantio-direto" value="0" min="0">
                     </div>
                 </div>
 
@@ -48,20 +45,32 @@
 
             <section id="resultado" class="result-section hidden">
                 <h2>📊 Balanço Ecológico</h2>
+                
                 <div class="cards">
                     <div class="card emissao">
                         <h3>Poluição Gerada</h3>
-                        <p id="txt-emissao">0 kg de CO₂</p>
+                        <p id="txt-emissao">0 kg</p>
                     </div>
                     <div class="card sequestro">
                         <h3>Carbono Absorvido</h3>
-                        <p id="txt-sequestro">0 kg de CO₂</p>
+                        <p id="txt-sequestro">0 kg</p>
                     </div>
                 </div>
 
-                <!-- Gráfico do Chart.js -->
-                <div class="chart-container">
-                    <canvas id="graficoCarbono"></canvas>
+                <!-- Gráfico Nativo em CSS puro (Não quebra nunca) -->
+                <div class="grafico-container">
+                    <div class="barra-wrapper">
+                        <span class="label-barra">Emissões</span>
+                        <div class="bg-barra">
+                            <div id="barra-emissao" class="progresso-barra vermelho" style="width: 0%"></div>
+                        </div>
+                    </div>
+                    <div class="barra-wrapper">
+                        <span class="label-barra">Sequestro</span>
+                        <div class="bg-barra">
+                            <div id="barra-sequestro" class="progresso-barra verde" style="width: 0%"></div>
+                        </div>
+                    </div>
                 </div>
                 
                 <div id="status-box" class="status-box">
@@ -70,12 +79,12 @@
                     <p id="status-financeiro" class="financeiro-texto"></p>
                 </div>
 
-                <button id="btn-pdf" class="btn-secundario">📄 Baixar Relatório em PDF</button>
+                <button onclick="window.print()" class="btn-secundario">📄 Imprimir Relatório</button>
             </section>
         </main>
 
         <footer>
-            <p>Projeto Agrinho 2026 • 1º Ano do Ensino Médio • Agro Forte, Futuro Sustentável</p>
+            <p>1º Ano Ensino Médio • Paraná • Agro Forte, Futuro Sustentável</p>
         </footer>
     </div>
 
